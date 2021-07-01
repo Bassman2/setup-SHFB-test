@@ -20,5 +20,6 @@ jobs:
         version: v2021.4.9.0
         
     - name: Test
-      run: echo SHFBROOT: %SHFBROOT% 
+      run: |
+           echo SHFBROOT: %SHFBROOT% 
       shell: cmd

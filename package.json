@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Bassman2/setup-SHFB/issues"
   },
-  "homepage": "https://github.com/Bassman2/setup-SHFB#readme"
+  "homepage": "https://github.com/Bassman2/setup-SHFB#readme",
+  "dependencies": {
+    "@actions/core": "^1.4.0"
+  }
 }

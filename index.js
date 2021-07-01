@@ -1,7 +1,7 @@
 const core = require('@actions/core');
-//const exec = require('@actions/exec');
+const exec = require('@actions/exec');
 const tool = require('@actions/tool-cache');
-//const path = require('path');
+const path = require('path');
 const fs = require('fs');
 
 
@@ -20,26 +20,26 @@ async function run() {
         core.exportVariable('SHFBROOT', shfbRoot);
 
 
-        const shfbInstaller = await tool.downloadTool(toolUrl);
-        console.log('shfbInstaller: ', shfbInstaller);
+        const tempFile = await tool.downloadTool(toolUrl);
+        //console.log('shfbInstaller: ', shfbInstaller);
 
 
-        const stat = fs.statSync(shfbInstaller);
-        console.log('Dir: ', stat.isDirectory);
-        console.log('File: ', stat.isFile);
-        console.log('Size: ', stat.size);
+        //const stat = fs.statSync(shfbInstaller);
+        //console.log('Dir: ', stat.isDirectory);
+        //console.log('File: ', stat.isFile);
+        //console.log('Size: ', stat.size);
         
         console.log('-------------------------------------------');
  
+        //const shfbFolder = await tool.extract7z(shfbInstaller, home);
+        await exec.exec('7z', ['x', '-y', tempFile], { cwd: home});
 
-        const shfbFolder = await tool.extract7z(shfbInstaller, home);
-        console.log('shfbFolder: ', shfbFolder);
+        
+        //console.log('shfbFolder: ', shfbFolder);
 
-        if (fs.existsSync(shfbFolder)) {
-            console.error('shfbFolder exists');
-        }
+        
 
-        const instFolder = path.join(shfbFolder, 'InstallResources');
+        const instFolder = path.join(home, 'InstallResources');
         console.log('instFolder: ', instFolder);
         if (fs.existsSync(instFolder)) {
             console.error('instFolder exists');

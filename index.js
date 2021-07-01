@@ -11,6 +11,7 @@ async function run() {
     try {
 
         const version = core.getInput('version');
+        const vsixInst = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe';
         const toolUrl = 'https://github.com/EWSoftware/SHFB/releases/download/' + version + '/SHFBInstaller_' + version + '.zip';
         const home = process.env.GITHUB_WORKSPACE;
 
@@ -51,6 +52,10 @@ async function run() {
             console.error('instFile exists');
         }
 
+        await exec.exec('msiexec', ['/i', 'SandcastleHelpFileBuilder.msi', '/quiet'], { cwd: instFolder});
+        
+        await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
+
         //const shfbResDir = path.join(shfbFolder, 'InstallResources');
         //console.log('shfbResDir: ', shfbResDir);
 
@@ -72,7 +77,7 @@ options.cwd = shfbResDir;
 await exec.exec('msiexec', ['/i', 'SandcastleHelpFileBuilder.msi', '/quiet'], options );
 
 
-const vsixInst = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe';
+
 
 await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options );
 */

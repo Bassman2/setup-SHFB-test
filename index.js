@@ -1,7 +1,7 @@
-const core = require('@actions/core'),
-      exec = require('@actions/exec'),
-      tool = require('@actions/tool-cache'),
-	  path = require('path');
+const core = require('@actions/core');
+const exec = require('@actions/exec');
+const tool = require('@actions/tool-cache');
+const path = require('path');
 
 
 const version = core.getInput('version');

@@ -29,10 +29,28 @@ async function run() {
         console.log('File: ', stat.isFile);
         console.log('Size: ', stat.size);
         
-
+        console.log('-------------------------------------------');
+ 
 
         const shfbFolder = await tool.extractZip(shfbInstaller, home);
         console.log('shfbFolder: ', shfbFolder);
+
+        if (fs.existsSync(shfbFolder)) {
+            console.error('shfbFolder exists');
+        }
+
+        const instFolder = path.join(shfbFolder, 'InstallResources');
+        console.log('instFolder: ', instFolder);
+        if (fs.existsSync(instFolder)) {
+            console.error('instFolder exists');
+        }
+
+        const instFile = path.join(instFolder, 'SandcastleHelpFileBuilder.msi');
+        console.log('instFile: ', instFile);
+        if (fs.existsSync(instFile)) {
+            console.error('instFile exists');
+        }
+
         //const shfbResDir = path.join(shfbFolder, 'InstallResources');
         //console.log('shfbResDir: ', shfbResDir);
 

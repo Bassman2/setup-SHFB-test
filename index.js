@@ -2,6 +2,7 @@ const core = require('@actions/core');
 //const exec = require('@actions/exec');
 const tool = require('@actions/tool-cache');
 //const path = require('path');
+const fs = require('fs'),
 
 
 
@@ -21,6 +22,15 @@ async function run() {
 
         const shfbInstaller = await tool.downloadTool(toolUrl);
         console.log('shfbInstaller: ', shfbInstaller);
+
+
+        const stat = fs.statSync(shfbInstaller);
+        console.log('Dir: ', stat.isDirectory);
+        console.log('File: ', stat.isFile);
+        console.log('Size: ', stat.size);
+        
+
+
         const shfbFolder = await tool.extractZip(shfbInstaller, home);
         console.log('shfbFolder: ', shfbFolder);
         const shfbResDir = path.join(shfbFolder, 'InstallResources');

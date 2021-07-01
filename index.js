@@ -32,7 +32,7 @@ async function run() {
         console.log('-------------------------------------------');
  
 
-        const shfbFolder = await tool.extractZip(shfbInstaller, home);
+        const shfbFolder = await tool.extract7z(shfbInstaller, home);
         console.log('shfbFolder: ', shfbFolder);
 
         if (fs.existsSync(shfbFolder)) {

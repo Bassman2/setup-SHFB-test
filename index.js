@@ -10,6 +10,10 @@ const home = process.env.GITHUB_WORKSPACE;
 
 console.log('Install SHFB Version: ' + version);
 
+const shfbRoot = 'C:\\Program Files (x86)\\EWSoftware\\Sandcastle Help File Builder\\';
+core.exportVariable('SHFBROOT', shfbRoot);
+
+/*
 const shfbInstaller = await tool.downloadTool(toolUrl);
 const shfbFolder = await tool.extractZip(shfbInstaller, home);
 const shfbResDir = path.join(shfbFolder, 'InstallResources');
@@ -35,3 +39,4 @@ await exec.exec('msiexec', ['/i', 'SandcastleHelpFileBuilder.msi', '/quiet'], op
 const vsixInst = 'C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe';
 
 await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options );
+*/

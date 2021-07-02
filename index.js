@@ -47,7 +47,8 @@ async function run() {
             }
         };
         options.cwd = instFolder;
-        options.windowsHide = true;
+        //options.windowsHide = true;
+        options.shell = 'powershell';
 
         await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
 

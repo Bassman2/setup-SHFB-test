@@ -32,6 +32,20 @@ async function run() {
         await exec.exec('msiexec', ['/i', 'SandcastleHelpFileBuilder.msi', '/quiet'], { cwd: instFolder});
         
         // install SHFBVisualStudioPackage_VS2017AndLater.vsix
+
+        const options = {};
+        options.listeners = {
+          stdout: (data) => {
+            console.log(data.toString());
+          },
+          stderr: (data) => {
+            console.error(data.toString());
+          }
+        };
+        options.cwd = instFolder;
+
+        await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
+
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
     }

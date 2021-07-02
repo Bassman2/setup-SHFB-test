@@ -2,6 +2,7 @@ const core = require('@actions/core'),
       exec = require('@actions/exec'),
       tool = require('@actions/tool-cache'),
       path = require('path');
+const child_process = require('child_process');
 
 async function run() {
     try {
@@ -33,20 +34,31 @@ async function run() {
         
         // install SHFBVisualStudioPackage_VS2017AndLater.vsix
 
+        let myOutput = '';
+        let myError = '';
+
         const options = {};
         options.listeners = {
-          stdout: (data) => {
-            console.log(data.toString());
-          },
-          stderr: (data) => {
-            console.error(data.toString());
-          }
+            stdout: (data) => {
+                myOutput += data.toString();
+            },
+            stderr: (data) => {
+                myError += data.toString();
+            }
         };
         options.cwd = instFolder;
+        options.windowsHide = true;
 
         await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
+
+        //child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
+        //child_process.execSync(vsixInst + ' /q /a SHFBVisualStudioPackage_VS2017AndLater.vsix', options)
+        //child_process.spawnSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
+
+        console.log('Output: ', myOutput);
+        console.log('Error: ', myError);
 
     }
     catch (error) {

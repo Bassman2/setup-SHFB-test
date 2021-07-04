@@ -50,11 +50,11 @@ async function run() {
         //options.windowsHide = true;
         options.shell = 'powershell';
 
-        await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
+        //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
-        //child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
+        child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
         //child_process.execSync(vsixInst + ' /q /a SHFBVisualStudioPackage_VS2017AndLater.vsix', options)
         //child_process.spawnSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
 

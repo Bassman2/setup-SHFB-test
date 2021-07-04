@@ -48,16 +48,16 @@ async function run() {
         };
         options.cwd = instFolder;
         //options.windowsHide = true;
-        //options.shell = 'powershell';
+        options.shell = 'cmd';
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
-		options.env = { 
-			NODE_ENV: 'production',
-			PATH: process.env.PATH
-		};
+		//options.env = { 
+		//	NODE_ENV: 'production',
+		//	PATH: process.env.PATH
+		//};
 		
         child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
         //child_process.execSync(vsixInst + ' /q /a SHFBVisualStudioPackage_VS2017AndLater.vsix', options)

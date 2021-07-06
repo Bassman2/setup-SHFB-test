@@ -39,17 +39,19 @@ async function run() {
         let myError = '';
 
         const options = {};
-        options.listeners = {
-            stdout: (data) => {
-                myOutput += data.toString();
-            },
-            stderr: (data) => {
-                myError += data.toString();
-            }
-        };
+        //options.listeners = {
+        //    stdout: (data) => {
+        //        myOutput += data.toString();
+        //    },
+        //    stderr: (data) => {
+        //        myError += data.toString();
+        //    }
+        //};
         options.cwd = instFolder;
         //options.windowsHide = true;
         options.shell = 'cmd';
+		options.timeout = 4 * 60 * 1000;
+		options.stdio = 'inherit';
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
 
@@ -64,8 +66,8 @@ async function run() {
         //child_process.execSync(vsixInst + ' /q /a SHFBVisualStudioPackage_VS2017AndLater.vsix', options)
         //child_process.spawnSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
 
-        console.log('Output: ', myOutput);
-        console.log('Error: ', myError);
+        //console.log('Output: ', myOutput);
+        //console.log('Error: ', myError);
 
     }
     catch (error) {

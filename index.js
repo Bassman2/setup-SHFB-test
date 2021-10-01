@@ -38,7 +38,7 @@ async function run() {
         let myOutput = '';
         let myError = '';
 
-        const options = {};
+        //const options = {};
         //options.listeners = {
         //    stdout: (data) => {
         //        myOutput += data.toString();
@@ -47,13 +47,13 @@ async function run() {
         //        myError += data.toString();
         //    }
         //};
-        options.cwd = instFolder;
+        //options.cwd = instFolder;
         //options.windowsHide = true;
-        options.shell = 'cmd';
-		options.timeout = 4 * 60 * 1000;
-		options.stdio = 'inherit';
+        //options.shell = 'cmd';
+		//options.timeout = 4 * 60 * 1000;
+		//options.stdio = 'inherit';
 
-        //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options);
+        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 
@@ -62,7 +62,7 @@ async function run() {
 		//	PATH: process.env.PATH
 		//};
 		
-        child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
+        //child_process.execFileSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
         //child_process.execSync(vsixInst + ' /q /a SHFBVisualStudioPackage_VS2017AndLater.vsix', options)
         //child_process.spawnSync(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], options)
 

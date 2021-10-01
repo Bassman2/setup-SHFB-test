@@ -22,4 +22,6 @@ jobs:
     - name: Test
       run: |
            echo SHFBROOT: %SHFBROOT% 
+           echo TEMP: %TEMP%
+           type %TEMP%\vsixinst.log
       shell: cmd

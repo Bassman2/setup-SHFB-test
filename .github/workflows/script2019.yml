@@ -23,12 +23,11 @@ jobs:
            Write-Host "Installing MSI..."
            cmd /c start /wait msiexec /i InstallResources\SandcastleHelpFileBuilder.msi /quiet
            Write-Host "Installing VSIX..."
-           . "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe" /q /a /logFile:"$env:TEMP\vsixinst.log" InstallResources\SHFBVisualStudioPackage_VS2017AndLater.vsix
+           . "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe" /q /a /logFile:.\vsixinst.log InstallResources\SHFBVisualStudioPackage_VS2017AndLater.vsix
            Write-Host "Sandcastle installed" -ForegroundColor Green
-           echo $env:TEMP
-           dir "$env:TEMP\*.log"
+           dir ".\*.log"
            Write-Host "-----------------------------------------"
-           type "$env:TEMP\vsixinst.log"
+           type ".\vsixinst.log"
       shell: pwsh
         
     - name: Test

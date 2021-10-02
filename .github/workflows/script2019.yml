@@ -1,4 +1,4 @@
-name: "test 2019"
+name: "script VS 2019"
 
 on: [push, pull_request]
 
@@ -25,6 +25,7 @@ jobs:
            Write-Host "Installing VSIX..."
            . "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\Common7\IDE\VSIXInstaller.exe" /q /a /logFile:vsixinst.log InstallResources\SHFBVisualStudioPackage_VS2017AndLater.vsix
            Write-Host "Sandcastle installed" -ForegroundColor Green
+           type %TEMP%\vsixinst.log
       shell: pwsh
         
     - name: Test

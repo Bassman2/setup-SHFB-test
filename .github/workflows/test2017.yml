@@ -1,4 +1,4 @@
-name: "test 2016"
+name: "test VS 2017"
 
 on: [push, pull_request]
 

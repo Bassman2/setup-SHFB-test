@@ -1,13 +1,13 @@
-name: "test"
+name: "test 2019"
 
 on: [push, pull_request]
 
 jobs:
   build:
     runs-on: windows-2019
-    env:
-      SHFB_VERSION: V2021.4.9.0
-      SHFB_ROOT: C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\
+#    env:
+#      SHFB_VERSION: V2021.4.9.0
+#      SHFB_ROOT: C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\
     
     steps:
  

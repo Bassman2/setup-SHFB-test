@@ -53,7 +53,8 @@ async function run() {
 		//options.timeout = 4 * 60 * 1000;
 		//options.stdio = 'inherit';
 
-        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
+        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2019.vsix'], { cwd: instFolder});
+        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2022.vsix'], { cwd: instFolder});
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 

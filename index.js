@@ -2,7 +2,7 @@ const core = require('@actions/core'),
       exec = require('@actions/exec'),
       tool = require('@actions/tool-cache'),
       path = require('path'),
-      fs = require('fs');
+      fs = require('fs/promises');
 const child_process = require('child_process');
 
 async function run() {

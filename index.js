@@ -2,7 +2,7 @@ const core = require('@actions/core'),
       exec = require('@actions/exec'),
       tool = require('@actions/tool-cache'),
       path = require('path'),
-      fs = require('fs/promises');
+      fs = require('fs');
 const child_process = require('child_process');
 
 async function run() {
@@ -76,7 +76,7 @@ async function run() {
     catch (error) {
         core.setFailed(error.message);
         try {
-            const data = await fs.readFile(path.join(instFolder, 'vsixinst.log'), { encoding: 'utf8' });
+            const data = await fs.readFileSync(path.join(instFolder, 'vsixinst.log'), 'utf8');
 	    console.log('error - logfile follows:');
             console.log(data);
         } catch (err) {

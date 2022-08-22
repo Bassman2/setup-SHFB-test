@@ -5,6 +5,8 @@ const core = require('@actions/core'),
 const child_process = require('child_process');
 
 async function run() {
+    const home = process.env.GITHUB_WORKSPACE;
+    const instFolder = path.join(home, 'InstallResources');
     try {
 
         const version = core.getInput('version');
@@ -12,12 +14,11 @@ async function run() {
 		const vsixInst = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\Installer\\resources\\app\\ServiceHub\\Services\\Microsoft.VisualStudio.Setup.Service\\VSIXInstaller.exe"';
         const toolUrl = 'https://github.com/EWSoftware/SHFB/releases/download/' + version + '/SHFBInstaller_' + version + '.zip';
         const shfbRoot = 'C:\\Program Files (x86)\\EWSoftware\\Sandcastle Help File Builder\\';
-        const home = process.env.GITHUB_WORKSPACE;
-        const instFolder = path.join(home, 'InstallResources');
 
         // output infos
         console.log('Install SHFB Version: ', version);
         console.log('Download: ', toolUrl);
+	console.log('Install folder: ', instFolder);
 
         // set SHFBROOT env variable
         // needed by msbuild, nuget and VS        
@@ -53,7 +54,7 @@ async function run() {
 		//options.timeout = 4 * 60 * 1000;
 		//options.stdio = 'inherit';
 
-        await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2019.vsix'], { cwd: instFolder});
+        //await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2019.vsix'], { cwd: instFolder});
         await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2022.vsix'], { cwd: instFolder});
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
@@ -73,6 +74,13 @@ async function run() {
     }
     catch (error) {
         core.setFailed(error.message);
+        try {
+            const data = await fs.readFile(path.join(instFolder, 'vsixinst.log'), { encoding: 'utf8' });
+	    console.log('error - logfile follows:');
+            console.log(data);
+        } catch (err) {
+            console.log(err);
+        }
     }
 }
 

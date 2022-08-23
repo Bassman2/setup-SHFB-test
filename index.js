@@ -56,7 +56,7 @@ async function run() {
 		//options.stdio = 'inherit';
 
         //await exec.exec(vsixInst, ['/q', '/a', '/logFile:vsixinst.log', 'SHFBVisualStudioPackage_VS2017And2019.vsix'], { cwd: instFolder});
-        await exec.exec(vsixInst, ['/q', '/a', '/logFile:' + path.join(instFolder, 'vsixinst.log'), 'SHFBVisualStudioPackage_VS2022AndLater.vsix'], { cwd: instFolder});
+        //await exec.exec(vsixInst, ['/q', '/a', '/logFile:' + path.join(instFolder, 'vsixinst.log'), 'SHFBVisualStudioPackage_VS2022AndLater.vsix'], { cwd: instFolder});
 
         //await exec.exec(vsixInst, ['/q', '/a', 'SHFBVisualStudioPackage_VS2017AndLater.vsix'], { cwd: instFolder});
 

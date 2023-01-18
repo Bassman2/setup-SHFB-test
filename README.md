@@ -23,7 +23,7 @@ Example:
         - name: Install SHFB
           uses: Bassman2/setup-SHFB@v2
           with:
-            version: v2021.4.9.0
+            version: 2022.12.30.0
         
         - name: Create Test Documentation
           run: msbuild setup-SHFB-Test.sln /p:configuration="Release" /m /verbosity:minimal

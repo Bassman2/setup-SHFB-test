@@ -8,7 +8,7 @@ inputs:
   version:  
     description: 'SHFB2 version to install'
     required: true
-    default: '2021.4.9.0'
+    default: '2022.12.30.0'
 runs:
   using: 'node12'
   main: 'index.js'

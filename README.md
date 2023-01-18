@@ -11,17 +11,17 @@ Example:
 
     jobs:
       build:
-        runs-on: windows-2019
+        runs-on: windows-2022
     
         steps:
         - name: Install checkout
-          uses: actions/checkout@v2
+          uses: actions/checkout@v3
       
         - name: Add msbuild to PATH
-          uses: microsoft/setup-msbuild@v1
+          uses: microsoft/setup-msbuild@v1.1
       
         - name: Install SHFB
-          uses: Bassman2/setup-SHFB@v1
+          uses: Bassman2/setup-SHFB@v2
           with:
             version: v2021.4.9.0
         

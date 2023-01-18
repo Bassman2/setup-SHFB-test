@@ -20,5 +20,5 @@ jobs:
       run: |
            echo SHFBROOT: %SHFBROOT% 
            echo TEMP: %TEMP%
-           type %TEMP%\vsixinst.log
+           type %TEMP%\*_VSIXInstaller_*.log
       shell: cmd

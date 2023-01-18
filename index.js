@@ -7,7 +7,7 @@ async function run() {
     try {
 
         const version = core.getInput('version');
-        const vsixInst = '"C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe"';
+        const vsixInst = '"C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\Common7\\IDE\\VSIXInstaller.exe"';
         const toolUrl = 'https://github.com/EWSoftware/SHFB/releases/download/v' + version + '/SHFBInstaller_' + version + '.zip';
         const shfbRoot = 'C:\\Program Files (x86)\\EWSoftware\\Sandcastle Help File Builder\\';
         const home = process.env.GITHUB_WORKSPACE;

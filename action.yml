@@ -1,14 +1,17 @@
-name: 'setup-SHFB2'
-description: 'SHFB2 setup'
+name: 'setup-SHFB'
+description: 'Install SHFB'
 author: 'Ralf Beckers'
-branding:
-  color: purple
-  icon: terminal
+
 inputs:
-  version:  
-    description: 'SHFB2 version to install'
+  version: 
+    description:  'version of SHFB to install'
     required: true
     default: '2022.12.30.0'
+  
+    
 runs:
-  using: 'node12'
-  main: 'index.js'
+  using: "composite"
+  steps:
+    - run: ${{ github.action_path }}/setup.ps1 -version ${{ inputs.version }} 
+      shell: pwsh
+  

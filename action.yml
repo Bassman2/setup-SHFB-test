@@ -14,5 +14,6 @@ runs:
     - run: |
            ${{ github.action_path }}/setup.ps1 -version ${{ inputs.version }}
            echo "SHFBROOT=C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\" >> $GITHUB_ENV
+           echo "Ready ..."
       shell: pwsh
   

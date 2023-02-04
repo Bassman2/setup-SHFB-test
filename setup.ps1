@@ -34,11 +34,6 @@ $msi = Join-Path -Path $instFolder -ChildPath "SandcastleHelpFileBuilder.msi"
 echo "msi: $msi"
 cmd /c start /wait msiexec /i $msi /quiet
 
-$env:SHFBROOT = 'C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\'
-#New-Item -Path Env:\SHFBROOT -Value 'C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\'
-[System.Environment]::SetEnvironmentVariable('SHFBROOT', 'C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\')
-[Environment]::SetEnvironmentVariable('SHFBROOT', 'C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\', 'Machine')
-
 if ([IO.File]::Exists($vsixinstaller19))
 {
 	Write-Host "Installing VSIX for 2019..."
@@ -55,30 +50,3 @@ if ([IO.File]::Exists($vsixinstaller22))
 }
 
 Write-Host "Sandcastle installed" -ForegroundColor Green	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	

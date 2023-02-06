@@ -15,4 +15,4 @@ runs:
       shell: pwsh
       
     - run: echo "SHFBROOT=C:\Program Files (x86)\EWSoftware\Sandcastle Help File Builder\" >> $GITHUB_ENV
-      shell: pwsh
+      shell: bash
